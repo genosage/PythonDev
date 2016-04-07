@@ -1,3 +1,7 @@
+from collections import Iterable
+from functools import reduce
+
+
 # print("Tom", 'and'.capitalize(), "Jerry")
 # # print(input('Test Input: \n'))
 # print("I'm \"\n\\leaving")
@@ -54,42 +58,135 @@
 # print(a)
 
 # function
-print(hex(12))
+# print(hex(12))
+#
+#
+# def myabs(x):
+#     if not isinstance(x, (int, float)):
+#         raise TypeError('SB')
+#     elif x >= 0:
+#         return x
+#     else:
+#         return -x
+#
+#
+# print(myabs(-10))
+#
+# import math
+#
+#
+# def move(x, y, step, angle=0):
+#     nx = x + step * math.cos(angle)
+#     ny = y - step * math.sin(angle)
+#     return nx, ny
+#
+#
+# r = move(1, 1, 10)
+# print(r)
+#
+#
+# def calc(*numbers):
+#     sum = 0
+#     for i in numbers:
+#         sum += i * i
+#     print(sum)
+#     return sum
+#
+#
+# calc(1, 2, 3)
+# calc()
+# a = [1, 2, 3]
+# calc(*a)
 
 
-def myabs(x):
-    if not isinstance(x, (int, float)):
-        raise TypeError('SB')
-    elif x >= 0:
-        return x
-    else:
-        return -x
+# def person(name, gender, **kw):
+#     print('name:', name, 'gender:', gender, 'other:', kw)
+#
+#
+# person('xiaoming', 'f', city='beijing')
+# dict = {'city': 'tianjin', '12': True}
+# person('xiaohong', 'm', **dict)
+
+#
+# def f(a, b, *, c, d):
+#     print('a = ', a, 'b =', b, 'c =', c, 'd =', d)
+#
+#
+# def f1(a, b, c=0, *args, **kw):
+#     print('a =', a, 'b =', b, 'c =', c, 'args =', args, 'kw =', kw)
+#
+#
+# def f2(a, b, c=0, *, d, **kw):
+#     print('a =', a, 'b =', b, 'c =', c, 'd =', d, 'kw =', kw)
+#
+#
+# f(1, 2, c=3, d=4)
+# f1(1, 2, 3, 4, 5, 6, haha=8)
+# f2(1, 2, 3, d=4, aa=5, sb=6)
+
+# l = [1, 2, 3, 4, 5, 6]
+# print(l[:2])
+# print(l[::2])
+# print(l[1:2:3])
+
+# d = {'x': 'a', 'y': 'b', 'z': 'c'}
+# print([m + ' = ' + n for m, n in d.items()])
+# print(isinstance(d, dict))
+#
+#
+# def fib(max):
+#     n, a, b = 0, 0, 1
+#     while n < max:
+#         yield b
+#         a, b = b, a + b
+#         n = n + 1
+#     return 'done'
+#
+#
+# f = fib(6)
+# print([i for i in f])
+
+# print(isinstance((x for x in range(1, 10, 2)), Iterable))
+#
+# def add(a, b, f):
+#     return f(a) + f(b)
+#
+# print(add(1, -2, abs))
+# from setuptools.dist import sequence
+#
+# print(list(map(str, [1, 2, 3, 4, 5])))
+#
+# print(isinstance(map(abs, [1, 2, -3]), sequence))
+#
+# def count():
+#     fs = []
+#     for i in range(1, 4):
+#         def f():
+#              return i*i
+#         fs.append(f)
+#     return fs
+#
+# [f1, f2, f3] = count()
+#
+# print(f1())
 
 
-print(myabs(-10))
+# def build(x, y):
+#     return lambda: x * x + y * y
+#
+#
+# f = build(2, 3)
+# print(f())
+# print(f.__name__)
+# print(build.__name__)
 
-import math
+class student(object):
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
 
+    def print_score(self):
+        print('%s : %s' % (self.name, self.score))
 
-def move(x, y, step, angle=0):
-    nx = x + step * math.cos(angle)
-    ny = y - step * math.sin(angle)
-    return nx, ny
-
-
-r = move(1, 1, 10, 0)
-print(r)
-
-
-def calc(*numbers):
-    sum = 0
-    for i in numbers:
-        sum += i * i
-    print(sum)
-    return sum
-
-
-calc(1, 2, 3)
-calc()
-a = [1, 2, 3]
-calc(*a)
+bart = student('Bart', 99)
+bart.print_score()
