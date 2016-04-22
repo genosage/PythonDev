@@ -179,14 +179,64 @@ from functools import reduce
 # print(f())
 # print(f.__name__)
 # print(build.__name__)
+#
+# class student(object):
+#     def __init__(self, name, score):
+#         self.name = name
+#         self.score = score
+#
+#     def print_score(self):
+#         print('%s : %s' % (self.name, self.score))
+#
+# bart = student('Bart', 99)
+# bart.print_score()
+#
+# print(type(str))
 
-class student(object):
-    def __init__(self, name, score):
-        self.name = name
-        self.score = score
+# class Student(object):
+#
+#     @property
+#     def birth(self):
+#         return self._birth
+#
+#     @birth.setter
+#     def birth(self, value):
+#         if not isinstance(value, int):
+#             raise ValueError('value must be an integer!')
+#         self._birth = value
+#
+#     @property
+#     def age(self):
+#         return 2016 - self._birth
+#
+# john = Student()
+# # john.birth = 'ada'
+# john.birth = 1994
+# print(john.age)
 
-    def print_score(self):
-        print('%s : %s' % (self.name, self.score))
+class Fib(object):
+    def __init__(self):
+        self.a, self.b = 0, 1
 
-bart = student('Bart', 99)
-bart.print_score()
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.a, self.b = self.b, self.a + self.b
+        if self.a > 100000:
+            raise StopIteration()
+        return self.a
+
+    def __getitem__(self, n):
+        a, b = 1, 1
+        for x in range(n):
+            a, b = b, a + b
+        return a
+
+for i in range(10):
+    print(Fib()[i])
+
+from enum import Enum
+
+Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+
